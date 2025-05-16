@@ -1,5 +1,5 @@
 # RTS-Game
-##A Beta Real Time Strategy Game
+## A Beta Real Time Strategy Game
 This project was created for educational purposes only.
 Project currently in development.
 Assets used from GameDev's RTS course.
