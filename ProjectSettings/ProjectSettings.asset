@@ -816,7 +816,20 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   webWasm2023: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: SORTIFY;SORTIFY_ATTRIBUTES
+    EmbeddedLinux: SORTIFY;SORTIFY_ATTRIBUTES
+    GameCoreXboxOne: SORTIFY;SORTIFY_ATTRIBUTES
+    Nintendo Switch: SORTIFY;SORTIFY_ATTRIBUTES
+    PS4: SORTIFY;SORTIFY_ATTRIBUTES
+    PS5: SORTIFY;SORTIFY_ATTRIBUTES
+    QNX: SORTIFY;SORTIFY_ATTRIBUTES
+    ReservedCFE: SORTIFY;SORTIFY_ATTRIBUTES
+    Standalone: SORTIFY;SORTIFY_ATTRIBUTES
+    VisionOS: SORTIFY;SORTIFY_ATTRIBUTES
+    WebGL: SORTIFY;SORTIFY_ATTRIBUTES
+    XboxOne: SORTIFY;SORTIFY_ATTRIBUTES
+    tvOS: SORTIFY;SORTIFY_ATTRIBUTES
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
