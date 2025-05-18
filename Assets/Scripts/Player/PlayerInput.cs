@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private CinemachineCamera cinemachineCamera;
     [SerializeField] private float keyboardPanSpeed = 5f;
     [SerializeField] private float zoomSpeed = 1f;
+    [SerializeField] private float minZoomDistance = 7.5f;
 
     private CinemachineFollow cinemachineFollow;
     private float zoomStartTime;
@@ -32,7 +33,42 @@ public class PlayerInput : MonoBehaviour
 
     private void HandleZooming()
     {
+        if (ShouldSetZoomStartTime())
+        {
+            zoomStartTime = Time.time;
+        }
+
+        float zoomTime = Mathf.Clamp01((Time.time - zoomStartTime)*zoomSpeed);
+        Vector3 targetFollowOffset;
+
+        if (Keyboard.current.nKey.isPressed)
+        {
+            targetFollowOffset = new Vector3(
+                cinemachineFollow.FollowOffset.x,
+                minZoomDistance,
+                cinemachineFollow.FollowOffset.z
+            );
+        }
+        else
+        {
+            targetFollowOffset = new Vector3(
+                cinemachineFollow.FollowOffset.x,
+                startingFollowOffset.y,
+                cinemachineFollow.FollowOffset.z
+            );
+        }
         
+        cinemachineFollow.FollowOffset = Vector3.Slerp(
+            cinemachineFollow.FollowOffset,
+            targetFollowOffset,
+            zoomTime
+        );
+    }
+
+    private bool ShouldSetZoomStartTime()
+    {
+        return Keyboard.current.nKey.wasPressedThisFrame
+               || Keyboard.current.nKey.wasReleasedThisFrame;
     }
 
     private void HandlePanning()
