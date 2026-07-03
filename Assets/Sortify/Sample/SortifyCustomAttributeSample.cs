@@ -1,10 +1,11 @@
-#if UNITY_EDITOR && SORTIFY_ATTRIBUTES
+#if UNITY_EDITOR
 using UnityEngine;
 
 namespace Sortify
 {
     public class SortifyCustomAttributeSample : MonoBehaviour
     {
+#if SORTIFY_ATTRIBUTES
         [Button("Change Bool Button")]
         public bool Button = false;
 
@@ -74,6 +75,7 @@ namespace Sortify
         {
             Debug.Log("Invoke!");
         }
+#endif
     }
 }
 #endif

@@ -19,9 +19,6 @@ namespace Sortify
         private const string OBJECTS_FILE_NAME = "Sortify_Objects.json";
 
         private static Color _backgroundColor = new Color(0.22f, 0.22f, 0.22f, 1f);
-        private static Color _hoverColor = new Color(0.267f, 0.282f, 0.251f, 1f);
-        private static Color _selectedColor = new Color(0.188f, 0.361f, 0.518f, 1f);
-        private static Color _selectedUnFocusedColor = new Color(0.302f, 0.302f, 0.302f, 1f);
 
         private static Dictionary<GameObject, Color> _cachedColors = new Dictionary<GameObject, Color>();
         private static Dictionary<GameObject, StyleType> _cachedStyles = new Dictionary<GameObject, StyleType>();
@@ -32,8 +29,14 @@ namespace Sortify
         static SortifyObjectManager()
         {
             EditorSceneManager.sceneSaving += OnSceneSaving;
-            EditorSceneManager.sceneOpened += OnSceneOpened;
             EditorSceneManager.sceneClosing += OnSceneClosing;
+            EditorSceneManager.sceneOpened += OnSceneOpened;
+            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+
+#if UNITY_2019_1_OR_NEWER
+            AssemblyReloadEvents.beforeAssemblyReload += OnBeforeAssemblyReload;
+            AssemblyReloadEvents.afterAssemblyReload += OnAfterAssemblyReload;
+#endif
         }
 
         private static void OnSceneSaving(Scene scene, string path)
@@ -50,6 +53,31 @@ namespace Sortify
         private static void OnSceneClosing(Scene scene, bool removingScene)
         {
             _dataLoaded = false;
+        }
+
+        private static void OnPlayModeStateChanged(PlayModeStateChange state)
+        {
+            if (state == PlayModeStateChange.ExitingEditMode)
+            {
+                SaveObjectsToFile();
+            }
+            else if (state == PlayModeStateChange.EnteredEditMode)
+            {
+                LoadObjectsDataFromFile();
+                EditorApplication.RepaintHierarchyWindow();
+            }
+        }
+
+        private static void OnBeforeAssemblyReload()
+        {
+            SaveObjectsToFile();
+        }
+
+        private static void OnAfterAssemblyReload()
+        {
+            _dataLoaded = false;
+            LoadDataIfNeeded();
+            EditorApplication.RepaintHierarchyWindow();
         }
 
         #region Colors

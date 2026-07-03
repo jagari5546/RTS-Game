@@ -69,3 +69,10 @@ MonoBehaviour:
     details: "\u2022 Added the ability to save settings in the project, allowing
       settings to be transferred between computers. To enable saving settings in
       the project, go to Settings \u2192 Save In Project."
+  - version: 1.35
+    year: 2025
+    month: 5
+    day: 21
+    details: "\u2022 Improved JSON save reliability.\r\n\u2022 Implemented per-file
+      backups (up to 3 versions) with automatic recovery on corruption.\r\n\u2022
+      Fixed the problem of losing settings when recompiling the script."

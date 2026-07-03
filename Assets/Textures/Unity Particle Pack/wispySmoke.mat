@@ -13,6 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _COLORCOLOR_ON
+  - _EMISSION
   - _FADING_ON
   - _FLIPBOOKBLENDING_ON
   - _SOFTPARTICLES_ON
@@ -20,7 +21,7 @@ Material:
   m_InvalidKeywords:
   - _ALPHABLEND_ON
   - _REQUIRE_UV2
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 3000
@@ -122,11 +123,11 @@ Material:
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorAddSubDiff: {r: 1, g: 0, b: 0, a: 0}
-    - _EmissionColor: {r: 0.104830384, g: 0.3584906, b: 0.08285868, a: 1}
+    - _EmissionColor: {r: 0.25471696, g: 0.25471696, b: 0.25471696, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &7255985970407606866
+--- !u!114 &3082402053336682280
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,4 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 9
+  version: 10
